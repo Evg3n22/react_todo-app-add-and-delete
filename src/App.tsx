@@ -35,6 +35,12 @@ export const App: React.FC = () => {
   const [processings, setProcessings] = useState<number[]>([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [focusTrigger, setFocusTrigger] = useState(0);
+  const [errorTimestamp, setErrorTimestamp] = useState(0);
+
+  function showError(error: Errors) {
+    setHasError(error);
+    setErrorTimestamp(Date.now());
+  }
 
   useEffect(() => {
     setLoadTodos(true);
@@ -173,7 +179,6 @@ export const App: React.FC = () => {
         <TodoHeader
           allTodosCount={allTodosCount}
           completedCount={completedTodos.length}
-          loadTodos={loadTodos}
           todoTitle={todoTitle}
           setTodoTitle={(newTitle: string) => setTodoTitle(newTitle)}
           onCreateTodo={(title: string) => onCreateTodo(title)}
@@ -184,7 +189,6 @@ export const App: React.FC = () => {
 
         <TodoList
           todos={todos}
-          loadTodos={loadTodos}
           tempTodo={tempTodo}
           processings={processings}
           onDeleteTodo={(id: number) => onDeleteTodo(id)}
@@ -195,7 +199,6 @@ export const App: React.FC = () => {
           todoLeft={allTodosCount - completedTodos.length}
           filter={filter}
           setFilter={(newFilter: FiltersParam) => setFilter(newFilter)}
-          loadTodos={loadTodos}
           onDeleteCompletedTodos={onDeleteCompletedTodos}
         />
       </div>
@@ -203,7 +206,8 @@ export const App: React.FC = () => {
       <ErrorNotification
         hasError={hasError}
         loadTodos={loadTodos}
-        setHasError={(errorMsg: Errors) => setHasError(errorMsg)}
+        errorTimestamp={errorTimestamp}
+        setHasError={showError}
       />
     </div>
   );

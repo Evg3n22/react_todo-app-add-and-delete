@@ -13,7 +13,6 @@ enum Errors {
 type Props = {
   allTodosCount: number;
   completedCount: number;
-  loadTodos: boolean;
   todoTitle: string;
   setTodoTitle: (todoTitle: string) => void;
   onCreateTodo: (title: string) => void;
@@ -25,7 +24,6 @@ type Props = {
 export const TodoHeader: React.FC<Props> = ({
   allTodosCount,
   completedCount,
-  loadTodos,
   todoTitle,
   setTodoTitle,
   onCreateTodo,

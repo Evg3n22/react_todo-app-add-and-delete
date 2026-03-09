@@ -14,12 +14,14 @@ enum Errors {
 type Props = {
   hasError: Errors;
   loadTodos: boolean;
+  errorTimestamp: number;
   setHasError: (errorMsg: Errors) => void;
 };
 
 export const ErrorNotification: React.FC<Props> = ({
   hasError,
   loadTodos,
+  errorTimestamp,
   setHasError,
 }) => {
   const ERROR_MESSAGES: Record<Errors, string> = {
@@ -37,7 +39,7 @@ export const ErrorNotification: React.FC<Props> = ({
 
       return () => clearTimeout(id);
     }
-  }, [hasError]);
+  }, [hasError, errorTimestamp]);
 
   return (
     <>

@@ -7,7 +7,6 @@ import { Todo } from '../../types/Todo';
 type Props = {
   todos: Todo[];
   tempTodo: Todo | null;
-  loadTodos: boolean;
   processings: number[];
   onDeleteTodo: (id: number) => void;
 };
@@ -15,7 +14,6 @@ type Props = {
 export const TodoList: React.FC<Props> = ({
   todos,
   tempTodo,
-  loadTodos,
   processings,
   onDeleteTodo,
 }) => {

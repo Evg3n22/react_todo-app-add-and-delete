@@ -11,7 +11,6 @@ type Props = {
   todoLeft: number;
   filter: FiltersParam;
   setFilter: (newFilter: FiltersParam) => void;
-  loadTodos: boolean;
   onDeleteCompletedTodos: () => void;
 };
 
@@ -20,7 +19,6 @@ export const TodoFooter: React.FC<Props> = ({
   todoLeft,
   filter,
   setFilter,
-  loadTodos,
   onDeleteCompletedTodos,
 }) => {
   const filterItems = [
